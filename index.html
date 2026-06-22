@@ -119,10 +119,9 @@
     </section>
 
        <section class="panel reflection">
-           <h2>Logic Explanation</h2>
+           <h2>Reflection: How My Phase 2 System Works</h2>
         <p>
-            Reflection: How My Phase 2 System Works
-In my application, the loot array is the single source of truth. Every piece of information the interface displays—such as the list of items, the total loot value, and the split results—comes directly from the data stored in that array. The screen never stores its own numbers. Instead, the interface always reflects whatever is currently inside the array. When the array changes, the UI changes. When the array is empty, the UI shows an empty‑state message. When the array has items, the UI renders them in the loot table.
+            In my application, the loot array is the single source of truth. Every piece of information the interface displays—such as the list of items, the total loot value, and the split results—comes directly from the data stored in that array. The screen never stores its own numbers. Instead, the interface always reflects whatever is currently inside the array. When the array changes, the UI changes. When the array is empty, the UI shows an empty‑state message. When the array has items, the UI renders them in the loot table.
 
 I added quantity to my data model because Phase 2 requires total loot to be calculated as value × quantity for each item. This also makes the system more realistic: many items in a game or dungeon scenario come in stacks. By storing quantity inside each object, the array can represent the true state of the loot, and updateUI() can calculate totals correctly from that state.
 
