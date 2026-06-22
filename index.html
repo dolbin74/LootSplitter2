@@ -7,6 +7,7 @@
    <meta name="robots" content="index, follow">
    <meta name="author" content="David Anna">
    <meta name="theme-color" content="#ffffff">
+	
 
     <!-- Page title -->
     <title>Dungeon Loot Splitter</title>
@@ -23,11 +24,11 @@
 
 <main>
 
-    <!-- ---------------------------------------------------------
+    <!--
          PARTY SETUP PANEL
          Phase 2 requires a number input for party size.
          Changing this input must automatically trigger updateUI().
-    ---------------------------------------------------------- -->
+    -->
     <section class="panel">
         <h2>Party Setup</h2>
 
@@ -39,11 +40,11 @@
         <p id="partyError" class="error"></p>
     </section>
 
-    <!-- ---------------------------------------------------------
+    <!-- 
          ADD LOOT PANEL
          Phase 2 requires name, value, and quantity fields.
          All validation must happen before modifying the array.
-    ---------------------------------------------------------- -->
+     -->
     <section class="panel">
         <h2>Add Loot</h2>
 
@@ -63,7 +64,7 @@
         <p id="lootError" class="error"></p>
     </section>
 
-    <!-- ---------------------------------------------------------
+    <!--
          LOOT LIST PANEL
          Phase 2 requires a structured grid layout (not a <ul>).
          Must include:
@@ -72,7 +73,7 @@
          - Quantity
          - Remove button
          Must also show an empty-state message.
-    ---------------------------------------------------------- -->
+     -->
     <section class="panel">
         <h2>Loot List</h2>
 
@@ -98,12 +99,12 @@
         </div>
     </section>
 
-    <!-- ---------------------------------------------------------
+    <!-- 
          SPLIT LOOT PANEL
          The Split button must NOT contain calculation logic.
          It only calls handleSplit(), which uses state.
          Results must be hidden until valid.
-    ---------------------------------------------------------- -->
+    -->
     <section class="panel">
         <h2>Split Loot</h2>
 
@@ -117,7 +118,7 @@
         <p id="splitError" class="error"></p>
     </section>
 
-    <!-- ---------------------------------------------------------
+    <!-- 
          REFLECTION SECTION (required by assignment)
          Must explain:
          - How loot array is the source of truth
@@ -125,7 +126,7 @@
          - How updateUI() works
          - How state controls visibility
          - How validation protects state
-    ---------------------------------------------------------- -->
+     -->
     <section class="panel reflection">
         <h2>Logic Explanation</h2>
         <p>
