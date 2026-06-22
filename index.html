@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dungeon Loot Splitter — calculate total loot, split treasure among party members, and manage loot items with quantity and value.">
+   <meta name="robots" content="index, follow">
+   <meta name="author" content="David Anna">
+   <meta name="theme-color" content="#ffffff">
+
+    <!-- Page title -->
+    <title>Dungeon Loot Splitter</title>
+
+    <!-- External stylesheet (required: no inline CSS) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <!-- Main heading for the app -->
+    <h1>Dungeon Loot Splitter</h1>
+</header>
+
+<main>
+
+    <!-- ---------------------------------------------------------
+         PARTY SETUP PANEL
+         Phase 2 requires a number input for party size.
+         Changing this input must automatically trigger updateUI().
+    ---------------------------------------------------------- -->
+    <section class="panel">
+        <h2>Party Setup</h2>
+
+        <label for="partySize">Number of Party Members:</label>
+        <!-- Required: type="number", min="1", step="1" -->
+        <input type="number" id="partySize" min="1" step="1">
+
+        <!-- Validation messages must appear on screen -->
+        <p id="partyError" class="error"></p>
+    </section>
+
+    <!-- ---------------------------------------------------------
+         ADD LOOT PANEL
+         Phase 2 requires name, value, and quantity fields.
+         All validation must happen before modifying the array.
+    ---------------------------------------------------------- -->
+    <section class="panel">
+        <h2>Add Loot</h2>
+
+        <label for="lootName">Loot Name:</label>
+        <input type="text" id="lootName">
+
+        <label for="lootValue">Loot Value:</label>
+        <input type="number" id="lootValue" min="0" step="0.01">
+
+        <label for="lootQty">Quantity:</label>
+        <input type="number" id="lootQty" min="1" step="1">
+
+        <!-- Add Loot button triggers addLoot() -->
+        <button id="addLootBtn">Add Loot</button>
+
+        <!-- Validation message for loot input -->
+        <p id="lootError" class="error"></p>
+    </section>
+
+    <!-- ---------------------------------------------------------
+         LOOT LIST PANEL
+         Phase 2 requires a structured grid layout (not a <ul>).
+         Must include:
+         - Name
+         - Value
+         - Quantity
+         - Remove button
+         Must also show an empty-state message.
+    ---------------------------------------------------------- -->
+    <section class="panel">
+        <h2>Loot List</h2>
+
+        <!-- Empty state message (shown when loot array is empty) -->
+        <div id="noLootMessage">No loot added.</div>
+
+        <!-- Required grid layout for loot table -->
+        <div class="loot-table">
+
+            <!-- Column headers -->
+            <div class="loot-header">Name</div>
+            <div class="loot-header">Value</div>
+            <div class="loot-header">Quantity</div>
+            <div class="loot-header">Remove</div>
+
+            <!-- Rows will be inserted here by updateUI() -->
+            <div id="lootRows"></div>
+        </div>
+
+        <!-- Total loot must always reflect state -->
+        <div class="total-row">
+            Total Loot: $<span id="totalLoot">0.00</span>
+        </div>
+    </section>
+
+    <!-- ---------------------------------------------------------
+         SPLIT LOOT PANEL
+         The Split button must NOT contain calculation logic.
+         It only calls handleSplit(), which uses state.
+         Results must be hidden until valid.
+    ---------------------------------------------------------- -->
+    <section class="panel">
+        <h2>Split Loot</h2>
+
+        <button id="splitLootBtn">Split Loot</button>
+
+        <!-- These results are hidden until loot exists -->
+        <p id="finalTotal" class="info hidden">Total Loot (after tax): $0.00</p>
+        <p id="perMember" class="info hidden">Loot Per Party Member: $0.00</p>
+
+        <!-- Validation message for split -->
+        <p id="splitError" class="error"></p>
+    </section>
+
+    <!-- ---------------------------------------------------------
+         REFLECTION SECTION (required by assignment)
+         Must explain:
+         - How loot array is the source of truth
+         - Why quantity was added
+         - How updateUI() works
+         - How state controls visibility
+         - How validation protects state
+    ---------------------------------------------------------- -->
+    <section class="panel reflection">
+        <h2>Logic Explanation</h2>
+        <p>
+            My loot array is the single source of truth. Every time loot is added or removed,
+            the updateUI() function recalculates totals, updates the loot table, and controls
+            what is visible or enabled. I added quantity to the data model so total loot is
+            calculated as value × quantity. updateUI() performs all calculations and rendering
+            so there is no duplicate logic. State controls the interface: when the loot array
+            is empty, the table hides and the “No loot added” message appears. Conditional
+            logic prevents invalid state by validating inputs before modifying the array.
+        </p>
+    </section>
+
+</main>
+
+<!-- External JavaScript file (required: no inline JS) -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
